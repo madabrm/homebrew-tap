@@ -1,21 +1,19 @@
 class Mergesub < Formula
   desc "Flexible batch mkvmerge for video/subtitle"
   homepage "https://github.com/madabrm/mergesub"      # Ganti USERNAME sesuai GitHub
-  url "https://github.com/madabrm/mergesub/archive/v1.0.0.tar.gz"
-  sha256 "f35be3edc07441d89ea9d7ac069eb8619a2706e6cfe5e71db35064fa8e7a333f"
+  url "https://github.com/madabrm/mergesub/archive/v1.0.1.tar.gz"
+  sha256 "2507c43f27232aa359b535a5eafc50322833ef6aa52662fb010148df2fdb512f"
   license "MIT"
 
   depends_on "python"
   depends_on "mkvtoolnix"
 
   def install
-    bin.install "mergesub.py"
-    # buat symlink mergesub agar bisa dijalankan langsung
-    (bin/"mergesub").write <<~EOS
-      #!/bin/bash
-      python3 #{libexec}/mergesub.py "$@"
-    EOS
+  	chmod 0755, "mergesub.py"
+  	bin.install "mergesub.py"
+  	bin.install_symlink "mergesub.py" => "mergesub"
   end
+
 
   test do
     system "mergesub", "--help"
