@@ -5,7 +5,7 @@ class Mergesub < Formula
   sha256 "f35be3edc07441d89ea9d7ac069eb8619a2706e6cfe5e71db35064fa8e7a333f"
   license "MIT"
 
-  depends_on "python@3.11"
+  depends_on "python"
   depends_on "mkvtoolnix"
 
   def install
